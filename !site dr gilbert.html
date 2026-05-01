@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Gilbert Angel | Clínica Odontológica em Moreno - PE</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores Baseada na Identidade Visual -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            teal: '#1fb5bb',      /* Azul solicitado */
+                            tealDark: '#168c91',  
+                            purple: '#752995',    /* Roxo solicitado */
+                            purpleDark: '#521c68', 
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        .hero-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#1fb5bb 0.5px, transparent 0.5px), radial-gradient(#752995 0.5px, #f8fafc 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.4;
+        }
+
+        .blob-animate {
+            animation: blob-float 10s infinite alternate;
+        }
+
+        @keyframes blob-float {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translate(0, 0) scale(1); }
+            100% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; transform: translate(10px, 20px) scale(1.05); }
+        }
+
+        .doctor-img-container::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 4px solid #1fb5bb;
+            border-radius: 24px;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-white">
+
+    <!-- Top Bar -->
+    <div class="bg-brand-purple text-white text-sm py-2 px-4 hidden md:block">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <span><i class="fa-solid fa-location-dot mr-2 text-brand-teal"></i>Av. Ten. Cleto Campêlo, 2538 - Moreno, PE</span>
+                <span><i class="fa-solid fa-clock mr-2 text-brand-teal"></i>Abre às 14:00</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://www.instagram.com/drgilbert.angel/" target="_blank" class="hover:text-brand-teal transition">
+                    <i class="fa-brands fa-instagram text-lg"></i>
+                </a>
+                <a href="https://wa.me/5581998614567" target="_blank" class="hover:text-brand-teal transition font-bold">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> (81) 99861-4567
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo Oficial -->
+            <a href="#" class="flex items-center">
+                <img src="Gemini_Generated_Image_wbfvsbwbfvsbwbfv.jpg" alt="Logo Dr. Gilbert Angel" class="h-12 md:h-16 w-auto object-contain">
+            </a>
+
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#inicio" class="text-gray-600 hover:text-brand-purple font-semibold transition">Início</a>
+                <a href="#servicos" class="text-gray-600 hover:text-brand-purple font-semibold transition">Serviços</a>
+                <a href="#avaliacoes" class="text-gray-600 hover:text-brand-purple font-semibold transition">Avaliações</a>
+                <a href="#localizacao" class="text-gray-600 hover:text-brand-purple font-semibold transition">Localização</a>
+                <a href="https://wa.me/5581998614567" target="_blank" class="bg-brand-purple hover:bg-brand-purpleDark text-white px-6 py-2.5 rounded-full font-bold transition shadow-lg hover:shadow-purple-200">
+                    Agendar Agora
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-brand-purple text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 shadow-xl p-4 flex flex-col space-y-4">
+            <a href="#inicio" class="font-bold text-brand-purple text-lg">Início</a>
+            <a href="#servicos" class="font-medium">Serviços</a>
+            <a href="#avaliacoes" class="font-medium">Avaliações</a>
+            <a href="#localizacao" class="font-medium">Localização</a>
+            <a href="https://wa.me/5581998614567" class="bg-brand-teal text-white text-center py-3 rounded-xl font-bold italic">Marque sua consulta ↙️</a>
+        </div>
+    </nav>
+
+    <!-- Banner Principal (Hero Section) -->
+    <section id="inicio" class="relative overflow-hidden bg-white md:min-h-[700px] flex items-center">
+        <!-- Fundo Decorativo -->
+        <div class="absolute inset-0 hero-pattern z-0"></div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-teal/10 rounded-full blur-3xl z-0"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-purple/10 rounded-full blur-3xl z-0"></div>
+
+        <div class="container mx-auto px-4 z-10 relative">
+            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                
+                <!-- Coluna de Texto (Esquerda) -->
+                <div class="w-full md:w-1/2 text-center md:text-left pt-10 md:pt-0">
+                    <div class="inline-flex items-center space-x-2 bg-brand-purple/10 text-brand-purple px-4 py-2 rounded-full text-xs md:text-sm font-extrabold mb-6">
+                        <span class="flex h-2 w-2 rounded-full bg-brand-purple animate-ping mr-2"></span>
+                        <i class="fa-solid fa-award mr-1 text-brand-teal"></i> #6ANOS DE EXCELÊNCIA EM MORENO
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-tight text-brand-teal mb-6">
+                        Seu melhor <span class="text-brand-purple">sorriso</span> <br class="hidden lg:block"> começa aqui!
+                    </h2>
+                    
+                    <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-xl leading-relaxed">
+                        Cuidado especializado, tecnologia de ponta e um atendimento acolhedor para transformar sua saúde bucal.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                        <a href="https://wa.me/5581998614567" target="_blank" class="group relative bg-brand-teal hover:bg-brand-tealDark text-white px-10 py-5 rounded-2xl font-black text-lg transition-all shadow-xl hover:shadow-teal-200 flex items-center">
+                            <span>MARCAR CONSULTA</span>
+                            <i class="fa-solid fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <div class="flex flex-col items-start px-4">
+                            <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Ou ligue para:</span>
+                            <a href="tel:+558141140043" class="text-xl font-bold text-brand-purple hover:text-brand-teal transition">(81) 4114-0043</a>
+                        </div>
+                    </div>
+
+                    <!-- Mini Ratings na Hero -->
+                    <div class="mt-12 flex items-center justify-center md:justify-start space-x-6 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+                        <div class="flex items-center space-x-2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-6 h-6">
+                            <span class="font-bold text-gray-700">4.6/5.0</span>
+                        </div>
+                        <div class="w-px h-6 bg-gray-300"></div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-brands fa-facebook text-blue-600 text-xl"></i>
+                            <span class="font-bold text-gray-700">5.0/5.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna da Foto (Direita) -->
+                <div class="w-full md:w-1/2 relative flex justify-center items-center">
+                    <!-- Fundo animado atrás da foto -->
+                    <div class="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-tr from-brand-teal/20 to-brand-purple/20 blob-animate z-0"></div>
+                    
+                    <!-- Container da Foto -->
+                    <div class="relative z-10 doctor-img-container">
+                        <!-- Imagem do Dr. Gilbert (trst.jpg) -->
+                        <img 
+                            src="trst.jpg" 
+                            alt="Dr. Gilbert Angel" 
+                            class="rounded-3xl shadow-2xl w-full max-w-[450px] h-[550px] object-cover object-top"
+                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop';"
+                        >
+                        
+                        <!-- Floating Card 1: CRO -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 hidden sm:block">
+                            <div class="flex items-center space-x-3">
+                                <div class="bg-brand-teal text-white p-2 rounded-lg">
+                                    <i class="fa-solid fa-certificate"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 font-bold uppercase">Registro</p>
+                                    <p class="font-bold text-brand-purple">CRO-PE 10640</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Card 2: Atendimentos -->
+                        <div class="absolute top-10 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 hidden sm:block">
+                            <div class="flex items-center space-x-3">
+                                <div class="bg-brand-purple text-white p-2 rounded-lg">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 font-bold uppercase">Pacientes</p>
+                                    <p class="font-bold text-brand-purple">+5.000 Felizes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Ratings -->
+    <section class="py-12 bg-white relative z-20">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="bg-gray-50 rounded-3xl p-8 grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-200 shadow-sm border border-gray-100">
+                <!-- Google -->
+                <div class="text-center flex flex-col items-center justify-center md:pb-0 pb-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="w-10 h-10 mb-4">
+                    <div class="flex items-center justify-center space-x-2 text-2xl font-bold text-gray-800">
+                        <span>4.6</span>
+                        <div class="flex text-yellow-400 text-xl">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-sm font-medium">4.610+ avaliações reais no Google</p>
+                </div>
+                
+                <!-- Facebook -->
+                <div class="text-center flex flex-col items-center justify-center pt-8 md:pt-0">
+                    <i class="fa-brands fa-facebook text-blue-600 text-4xl mb-4"></i>
+                    <div class="flex items-center justify-center space-x-2 text-2xl font-bold text-gray-800">
+                        <span>5.0</span>
+                        <div class="flex text-yellow-400 text-xl">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-sm font-medium">Excelência recomendada no Facebook</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20">
+                <span class="text-brand-teal font-extrabold tracking-[.25em] uppercase text-xs">Especialidades</span>
+                <h3 class="text-4xl md:text-5xl font-black text-brand-purple mt-4 mb-6">Como podemos te ajudar?</h3>
+                <div class="w-20 h-1.5 bg-brand-teal mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Clínico Geral -->
+                <div class="group bg-white p-10 rounded-[2.5rem] shadow-xl shadow-gray-100 border border-gray-100 hover:border-brand-teal transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-brand-teal/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-teal group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-stethoscope text-3xl text-brand-teal group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-brand-purple mb-4">Clínico Geral</h4>
+                    <p class="text-gray-500 leading-relaxed">Check-ups preventivos, limpezas e restaurações para manter sua saúde bucal sempre em dia.</p>
+                </div>
+
+                <!-- Ortodontia -->
+                <div class="group bg-white p-10 rounded-[2.5rem] shadow-xl shadow-gray-100 border border-gray-100 hover:border-brand-purple transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-brand-purple/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-purple group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-teeth text-3xl text-brand-purple group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-brand-purple mb-4">Ortodontia</h4>
+                    <p class="text-gray-500 leading-relaxed">Aparelhos modernos para alinhar seus dentes e corrigir a mordida com conforto e discrição.</p>
+                </div>
+
+                <!-- Harmonização Facial -->
+                <div class="group bg-white p-10 rounded-[2.5rem] shadow-xl shadow-gray-100 border border-gray-100 hover:border-brand-teal transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-brand-teal/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-teal group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-wand-magic-sparkles text-3xl text-brand-teal group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-brand-purple mb-4">Harmonização Facial</h4>
+                    <p class="text-gray-500 leading-relaxed">Realçando sua beleza natural com procedimentos seguros e resultados equilibrados.</p>
+                </div>
+
+                <!-- Odontopediatria -->
+                <div class="group bg-white p-10 rounded-[2.5rem] shadow-xl shadow-gray-100 border border-gray-100 hover:border-brand-purple transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-brand-purple/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-purple group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-child-reaching text-3xl text-brand-purple group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-brand-purple mb-4">Odontopediatria</h4>
+                    <p class="text-gray-500 leading-relaxed">Atendimento lúdico e cuidadoso para que as crianças cresçam com sorrisos saudáveis.</p>
+                </div>
+
+                <!-- Canal em Sessão Única -->
+                <div class="group bg-white p-10 rounded-[2.5rem] shadow-xl shadow-gray-100 border border-gray-100 hover:border-brand-teal transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-brand-teal/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-teal group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-bolt text-3xl text-brand-teal group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-brand-purple mb-4">Canal em Sessão Única*</h4>
+                    <p class="text-gray-500 leading-relaxed">Tecnologia avançada para resolver problemas de canal com rapidez e o mínimo de desconforto.</p>
+                </div>
+
+                <!-- Estética Dental -->
+                <div class="group bg-white p-10 rounded-[2.5rem] shadow-xl shadow-gray-100 border border-gray-100 hover:border-brand-purple transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-brand-purple/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-purple group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-face-smile-beam text-3xl text-brand-purple group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-brand-purple mb-4">Estética Dental</h4>
+                    <p class="text-gray-500 leading-relaxed">Clareamentos e facetas para transformar a cor e o formato do seu sorriso dos sonhos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="avaliacoes" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl md:text-4xl font-black text-brand-purple mb-4 text-center">Aprovação dos nossos pacientes</h3>
+                <div class="w-20 h-1.5 bg-brand-teal mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-[2rem] shadow-lg border border-gray-100 relative group">
+                    <div class="text-brand-teal mb-4 text-xl">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 text-lg italic leading-relaxed mb-6">"Ótimo profissional, ambiente muito climatizado, fácil localização."</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-brand-purple/10 rounded-full flex items-center justify-center text-brand-purple font-bold">P</div>
+                        <span class="font-bold text-gray-800 text-center">Paciente Verificado</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-[2rem] shadow-lg border border-gray-100 relative group">
+                    <div class="text-brand-teal mb-4 text-xl">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 text-lg italic leading-relaxed mb-6 text-center">"Lugar agradável muito bom."</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-brand-teal/10 rounded-full flex items-center justify-center text-brand-teal font-bold">P</div>
+                        <span class="font-bold text-gray-800">Paciente Verificado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Localização & Contato -->
+    <section id="localizacao" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-8 bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100">
+                
+                <div class="w-full lg:w-2/5 bg-brand-purple text-white p-12 flex flex-col justify-center">
+                    <h3 class="text-4xl font-black mb-10 leading-tight">Venha nos <br> fazer uma visita</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-5">
+                            <div class="bg-white/10 p-3 rounded-2xl flex-shrink-0 text-brand-teal">
+                                <i class="fa-solid fa-map-location-dot text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Localização</h4>
+                                <p class="opacity-80 leading-relaxed mt-1">Av. Ten. Cleto Campêlo, 2538<br>Centro, Moreno - PE</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-5">
+                            <div class="bg-white/10 p-3 rounded-2xl flex-shrink-0 text-brand-teal">
+                                <i class="fa-solid fa-phone text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Canais de Contato</h4>
+                                <p class="opacity-80 text-lg mt-1 font-semibold">☎️ (81) 4114-0043</p>
+                                <p class="opacity-80 text-lg font-semibold italic"><i class="fa-brands fa-whatsapp text-brand-teal"></i> (81) 99861-4567</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-5">
+                            <div class="bg-white/10 p-3 rounded-2xl flex-shrink-0 text-brand-teal">
+                                <i class="fa-solid fa-clock text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Horário</h4>
+                                <p class="opacity-80 mt-1">Segunda a Sexta: Abre às 14:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/5581998614567" target="_blank" class="mt-12 bg-white text-brand-purple py-5 px-8 rounded-2xl font-black text-center transition hover:bg-brand-teal hover:text-white shadow-lg flex items-center justify-center space-x-3 group">
+                        <i class="fa-brands fa-whatsapp text-2xl group-hover:scale-110 transition-transform"></i>
+                        <span>FALAR NO WHATSAPP</span>
+                    </a>
+                </div>
+
+                <div class="w-full lg:w-3/5 min-h-[500px] relative">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.1472300067677!2d-35.093414924151746!3d-8.113271981313385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7aae0f38b0df617%3A0xb35a0ce8f01c9b68!2sAv.%20Ten.%20Cleto%20Campelo%2C%202538%20-%20Centro%2C%20Moreno%20-%20PE%2C%2054800-000!5e0!3m2!1spt-BR!2sbr!4v1714570000000!5m2!1spt-BR!2sbr" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 flex flex-col items-center">
+            <img src="Gemini_Generated_Image_wbfvsbwbfvsbwbfv.jpg" alt="Logo" class="h-16 w-auto brightness-0 invert opacity-60 mb-8">
+            <div class="flex space-x-6 mb-8">
+                <a href="https://www.instagram.com/drgilbert.angel/" target="_blank" class="text-2xl hover:text-brand-teal transition text-center"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/5581998614567" target="_blank" class="text-2xl hover:text-brand-teal transition text-center"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+            <div class="text-gray-500 text-center text-sm border-t border-white/5 pt-8 w-full">
+                &copy; <span id="year"></span> Dr. Gilbert Angel - CRO 10640. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
+    </script>
+</body>
+</html>
